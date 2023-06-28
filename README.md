@@ -22,4 +22,5 @@ compile:
 
 To deployed it go to : https://contracts-ui.substrate.io/
 
+Contracts(Rococo) -> Upload Wasm -> openColors.contract -> Deploy
 v0.1 -> 5EiMDgeApcbGXMEDof4nmAj9VSnbomy67pBZKfWVbsoguMuk
