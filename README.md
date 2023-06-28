@@ -12,6 +12,8 @@ I'll make 3 tutorials:
 2. The UI with next.js & useink library
 3. Using it with a wallet and some ROCs
 
+#disclaimer: This contract is for educational/art purposes only. It is not audited. Gas may not be optimized.
+
 ## Usage
 
 test:
@@ -23,4 +25,5 @@ compile:
 To deployed it go to : https://contracts-ui.substrate.io/
 
 Contracts(Rococo) -> Upload Wasm -> openColors.contract -> Deploy
+
 v0.1 -> 5EiMDgeApcbGXMEDof4nmAj9VSnbomy67pBZKfWVbsoguMuk
