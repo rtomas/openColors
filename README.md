@@ -1,10 +1,10 @@
-# openColors
+# open Dream Colors
 
-WIP
+"open Dream Colors" is a blockchain education art project that combines the realms of creativity and technology. It serves as an interactive platform where individuals can explore and deepen their understanding of blockchain while expressing their visions through colors. Participants are encouraged to learn about the fundamentals of blockchain technology, its decentralized nature, and its potential applications. They can then contribute their dream color to a shared digital canvas, representing their aspirations and dreams within the blockchain space. Each color added is recorded on the blockchain, ensuring transparency and immutability, thus fostering a collaborative and decentralized art experience. Through this project, people not only gain knowledge about blockchain but also become active participants in a collective artistic endeavor.
 
-The project is designed to create a colour palette for the web. The colours are stored in the smart contract secuencially, so the first colour is the first colour in the blockchain, the second colour is the second colour in the blockchain, and so on. People can add colours to the pallet.
+It will be used in Rococo for educational purposes. 
 
-It will be used in Rococo for educational purposes. So people can learn how to interact with the blockchain, have a polkadot wallet and ask for ROCs from the tap. Also, I would like to have a simple user interface to interact with the contract usign useink library.
+Github for the UI -> https://github.com/rtomas/openColors-web
 
 I'll make 3 tutorials:
 
