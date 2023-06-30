@@ -13,6 +13,19 @@ mod open_colors {
         NotOwner,
     }
 
+    #[ink(event)]
+    pub struct ColorAdded {
+        #[ink(topic)]
+        account_id: AccountId,
+        color: Color,
+    }
+
+    #[ink(event)]
+    pub struct ColorsClear {
+        #[ink(topic)]
+        account_id: AccountId,
+    }
+
     #[derive(scale::Encode, scale::Decode, Eq, PartialEq, Debug, Clone)]
     #[cfg_attr(feature = "std", derive(scale_info::TypeInfo, StorageLayout,))]
     pub struct Color {
@@ -32,7 +45,7 @@ mod open_colors {
     }
 
     impl OpenColors {
-        /// Constructor that initializes the `bool` value to the given `init_value`.
+        /// Constructor that initializes with the initial colors send in a vector
         #[ink(constructor)]
         pub fn new(initial_colors: Vec<Color>) -> Self {
             let mut instance = Self::default();
@@ -44,6 +57,7 @@ mod open_colors {
             instance.colors_added_per_user.insert(user, &colors_added);
             instance.colors_list = initial_colors.clone();
             instance.total_colors_added = initial_colors.len() as u32;
+            instance.owner = user;
 
             instance
         }
@@ -62,25 +76,37 @@ mod open_colors {
 
         #[ink(message)]
         pub fn clear_colors(&mut self) -> Result<(), Error> {
+            let account = self.env().caller();
+
             // only owners can clean the colors
             self.ensure_owner()?;
             self.colors_list.clear();
             self.total_colors_added = 0;
+
+            self.env().emit_event(ColorsClear {
+                account_id: account,
+            });
+
             Ok(())
         }
 
         #[ink(message)]
         pub fn add_color(&mut self, color: Color) {
+            let account = self.env().caller();
             self.colors_list.push(color.clone());
             let amount_of_color = self
                 .colors_added_per_user
                 .get(self.env().caller())
                 .unwrap_or(0)
                 + 1;
-            self.colors_added_per_user
-                .insert(self.env().caller(), &amount_of_color);
-            self.last_color = Some(color);
+            self.colors_added_per_user.insert(account, &amount_of_color);
+            self.last_color = Some(color.clone());
             self.total_colors_added += 1;
+
+            self.env().emit_event(ColorAdded {
+                account_id: account,
+                color,
+            });
         }
 
         #[ink(message)]
