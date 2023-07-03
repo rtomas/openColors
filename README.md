@@ -10,7 +10,7 @@ Github for the UI -> https://github.com/rtomas/openColors-web
 
 I'll make 3 tutorials:
 
-1. The smart contract in ink!
+1. [A beginner's guide to interacting with the App Art!](https://rtomas.hashnode.dev/how-to-use-the-open-dream-colors-art-app-with-your-own-wallet-and-ask-for-rocs)
 2. The UI with next.js & useink library
 3. Using it with a wallet and some ROCs
 
