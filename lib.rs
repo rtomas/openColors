@@ -51,6 +51,10 @@ mod open_colors {
             let mut instance = Self::default();
             let user = Self::env().caller();
 
+            if initial_colors.is_empty() {
+                return instance;
+            }
+
             instance.last_color = initial_colors.last().cloned();
             let colors_added =
                 instance.colors_added_per_user.get(user).unwrap_or(0) + initial_colors.len() as u32;
