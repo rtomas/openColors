@@ -50,24 +50,27 @@ mod open_colors {
         pub fn new(initial_colors: Vec<Color>) -> Self {
             let mut instance = Self::default();
             let user = Self::env().caller();
+            //set the owner
+            instance.owner = user;
 
             if initial_colors.is_empty() {
                 return instance;
             }
 
+            // set the last color
             instance.last_color = initial_colors.last().cloned();
+
+            // set the colors added per user and the total colors added
             let colors_added =
                 instance.colors_added_per_user.get(user).unwrap_or(0) + initial_colors.len() as u32;
             instance.colors_added_per_user.insert(user, &colors_added);
             instance.colors_list = initial_colors.clone();
             instance.total_colors_added = initial_colors.len() as u32;
-            instance.owner = user;
 
             instance
         }
 
         /// Constructors with no colors
-        #[ink(constructor)]
         pub fn default() -> Self {
             Self {
                 owner: Self::env().caller(),
