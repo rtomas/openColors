@@ -71,7 +71,7 @@ mod open_colors {
         }
 
         /// Constructors with no colors
-        pub fn default() -> Self {
+        fn default() -> Self {
             Self {
                 owner: Self::env().caller(),
                 colors_list: Vec::new(),
